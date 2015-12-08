@@ -276,7 +276,10 @@ public class Actor : GameObject
     {
         if (actions <= 0)
         {
-            return false;
+            if (!data.combat)
+            {
+                return false;
+            }
         }
 
         selector = new GameObject();

@@ -67,7 +67,7 @@ public class ItemLibrary
         armorList.Add(new Armor("hardshell_suit", "armor", 20, "plate"));
         armorList.Add(new Armor("command_suit", "armor", 30, "aramid"));
         armorList.Add(new Armor("strike_suit", "armor", 40, "hybrid"));
-        armorList.Add(new Armor("heavy_combat_armor", "armor", 80, "hybrid", new Trait(-1, "equip", new ActionTrait(-1))));
+        armorList.Add(new Armor("hcombat_armor", "armor", 80, "hybrid", new Trait(-1, "equip", new ActionTrait(-1))));
         armorList.Add(new Armor("phasing_armor", "armor", 10, "molecular", new Trait(-1, "equip", new ActionTrait(1))));
 
         //ENEMY ARMOR - See above
