@@ -11,7 +11,7 @@ public class LevelFromImage : ILevelBuilder
     public int pickUpCount = 5;
     public int enemyCount = 3;
     public LevelFromImageOutputInfo output = new LevelFromImageOutputInfo();
-    string path = "layout_all.bmp";
+    string path = "tiny.bmp";
     Random rng = new Random();
     Bitmap btm;
 

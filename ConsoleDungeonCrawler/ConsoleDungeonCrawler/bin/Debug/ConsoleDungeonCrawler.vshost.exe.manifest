@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConsoleDungeonCrawler.exe" size="66560">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ConsoleDungeonCrawler.exe" size="67072">
       <assemblyIdentity name="ConsoleDungeonCrawler" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>aok3jFyaGwZHahUvUmghCmrsjCcH35YLM1u7Nc0NEy4=</dsig:DigestValue>
+        <dsig:DigestValue>QsOqbRNPENow+hgTr5vKFkJoseq2vwpHFW9s3vFHYiE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

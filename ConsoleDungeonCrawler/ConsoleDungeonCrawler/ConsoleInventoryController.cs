@@ -80,8 +80,11 @@ class ConsoleInventoryController : IBaseController
                 data.currentItem = -1;
             }
 
-            data.player.actions--;
-            QuitInventory();
+            if(temp)
+            {
+                data.player.actions--;
+                QuitInventory();
+            }
         }
         if (item is Usable)
         {
@@ -89,15 +92,20 @@ class ConsoleInventoryController : IBaseController
 
             data.inventory.content[data.currentItem].count -= 1;
             // == 0 for potential abuse with items that have a count of < 0 to allow easier unlimited use items
-            if (data.inventory.content[data.currentItem].count == 0)
+
+            bool temp = u.Use();
+
+            if (data.inventory.content[data.currentItem].count == 0 && temp)
             {
                 data.inventory.content.RemoveAt(data.currentItem);
                 data.currentItem = -1;
             }
 
-            u.Use();
-            data.player.actions--;
-            QuitInventory();
+            if (temp)
+            {
+                data.player.actions--;
+                QuitInventory();
+            }
         }
     }
 

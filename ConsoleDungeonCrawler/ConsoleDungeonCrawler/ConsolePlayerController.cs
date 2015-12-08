@@ -59,6 +59,10 @@ public class ConsolePlayerController : IBaseController, IGameDataChangeListener,
                 break;
             case ConsoleKey.Enter:
                 //Console.WriteLine("\nenter");
+                if (data.combat)
+                {
+                    return;
+                }
                 End();
                 break;
             case ConsoleKey.R:

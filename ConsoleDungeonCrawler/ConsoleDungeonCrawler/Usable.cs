@@ -33,29 +33,29 @@ public class Usable : Item
         behaviour = traits;
     }
 
-    public void Use()
+    public bool Use()
     {
         GameData data = Application.GetData();
 
         if (data.combat)
         {
-            return;
+            return false;
         }
         //Yep, I'm actually going to do this.
         if (this.name == "tracer_ammo" && (data.player.Weapon.content.ammotype != "9mm" || data.player.Weapon.content.ammotype != "5.7x28mm"))
         {
             data.combatlog.Add("" + name + " can only applied to 9mm/5.7x28mm weapon systems.");
-            return;
+            return false;
         }
         if(this.name == "slug_shells" && data.player.Weapon.content.ammotype != "12-gauge")
         {
-            data.combatlog.Add("" + name + " can only applied to 12-gauge weapon systems.");
-            return;
+            data.combatlog.Add("Item can only applied to 12-gauge weapon systems.");
+            return false;
         }
         if (this.name == "flechet_shells" && data.player.Weapon.content.ammotype != "12-gauge")
         {
             data.combatlog.Add("" + name + " can only applied to 12-gauge weapon systems.");
-            return;
+            return false;
         }
         /**/
 
@@ -63,6 +63,9 @@ public class Usable : Item
         {
             data.player.AddTrait(behaviour[i]);
         }
+
+        data.combatlog.Add("" + name + " used");
+        return true;
     }
 
     public void AddBehaviour(Trait trait)

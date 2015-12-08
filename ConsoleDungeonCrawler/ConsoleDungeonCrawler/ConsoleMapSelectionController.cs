@@ -70,7 +70,7 @@ public class ConsoleMapSelectionController : IBaseController
                 }
                 if (current == MapStates.TINY)
                 {
-                    MasterControlProgram.map = "layout_all.bmp";
+                    MasterControlProgram.map = "tiny.bmp";
                     Application.ChangeGameState(GameStates.GAME);
                     Application.NewGame();
                 }

@@ -520,9 +520,10 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
                 "//W: " + data.player.Weapon.content.name,
                 "//A: " + data.player.Armor.content.name,
                 "//",
-                "//DMG " + data.player.Weapon.content.damage,
-                "//ACC " + data.player.Weapon.content.accuracy,
+                "//DMG   " + data.player.Weapon.content.damage,
+                "//ACC   " + data.player.Weapon.content.accuracy,
                 "//RANGE " + data.player.Weapon.content.range,
+                "//PEN   " + data.player.Weapon.content.penetration,
                 "//",
                 "//ARMOR: " + data.player.Armor.content.value + " points of ",
                 "//" + data.player.Armor.content.armortype + " armor",
@@ -553,6 +554,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
         {
             char[] label;
             string content = "Inventory:";
+            int inventoryOffset = 0;
             label = content.ToCharArray();
             for (int i = 0; i < label.Length; i++)
             {
@@ -567,8 +569,6 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
 
             if (data.inventory.content.Count > 0)
             {
-                int inventoryOffset = 0;
-
                 if (data.currentItem > 5 && data.currentItem + inventoryOffset < data.inventory.content.Count)
                 {
                     inventoryOffset += data.currentItem - 5;
@@ -647,11 +647,12 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
                 if (current.item.type == "weap")
                 {
                     Weapon temp = (Weapon)current.item;
-                    infoLog.Add("DAMAGE:    " + temp.damage.ToString());
-                    infoLog.Add("DMGTYPE:   " + temp.damagetype.ToString());
-                    infoLog.Add("AMMO:      " + temp.ammotype.ToString());
-                    infoLog.Add("RANGE      " + temp.range.ToString());
-                    infoLog.Add("ACCURACY   " + temp.accuracy.ToString());
+                    infoLog.Add("DAMAGE:     " + temp.damage.ToString());
+                    infoLog.Add("DMGTYPE:    " + temp.damagetype.ToString());
+                    infoLog.Add("AMMO:       " + temp.ammotype.ToString());
+                    infoLog.Add("RANGE       " + temp.range.ToString());
+                    infoLog.Add("ACCURACY    " + temp.accuracy.ToString());
+                    infoLog.Add("PENETRATION " + temp.penetration.ToString());
                 }
 
                 if (current.item.type == "armor")

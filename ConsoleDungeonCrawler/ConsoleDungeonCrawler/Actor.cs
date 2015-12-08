@@ -347,7 +347,7 @@ public class Actor : GameObject
     {
         float result = value;
 
-        if (armor.armortype == "none") return value;
+        if (armor.armortype == "none" || armor.armortype == "fabric") return value;
         if (dmgtype == "true") return value;
 
         #region plate
@@ -493,6 +493,7 @@ public class Actor : GameObject
         trait.Remove(this);
         traits.Remove(trait);
     }
+
     public void RemoveTrait(Trait trait)
     {
         trait.Remove(this);

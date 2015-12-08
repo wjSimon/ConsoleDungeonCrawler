@@ -45,6 +45,9 @@ public class GameData
         Application.GetData().inventory.Add(player.Weapon.content, 1);
         Application.GetData().inventory.Add(player.Armor.content, 1);
 
+        Application.GetData().inventory.Add(ItemLibrary.Get().usableList[1], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[2], 1);
+
         //DEBUGGING ONLY, DONT TOUCH IF YOU DONT KNOW WHAT YOU'RE DOING
         /*
         Application.GetData().inventory.Add(ItemLibrary.Get().items[0], 1);
@@ -60,7 +63,7 @@ public class GameData
         Application.GetData().inventory.Add(ItemLibrary.Get().keyList[1], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().keyList[2], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().keyList[3], 1);
-        //player.AddTrait(2, "temp", new HeavyInjuryTrait(5));
+        //
         /**/
 
         Random rng = new Random();

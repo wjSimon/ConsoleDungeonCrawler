@@ -15,11 +15,11 @@ public class RangeTrait : ITraitBehaviour
     }
     public void Execute(Actor actor)
     {
-        actor.Weapon.content.penetration += range;
+        actor.Weapon.content.range += range;
     }
 
     public void OnRemove(Actor actor)
     {
-        actor.Weapon.content.penetration -= range;
+        actor.Weapon.content.range -= range;
     }
 }
