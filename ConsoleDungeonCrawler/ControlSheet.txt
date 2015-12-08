@@ -1,0 +1,28 @@
+IN MENUS
+
+: WS to move up/down
+: Enter to confirm current selection
+
+IN GAME
+
+: WASD to move character/Combat Selector
+: C to enter Combat
+: Q to attack target location with weapon (fails if empty tile is selected)
+: Backspace to undo last move command
+: I to open Inventory
+	IN INVENTORY:
+	: WS to move up/down
+	: Enter to confirm selection
+		Armor/Weapon will be equipped
+		AmmoMod will be used (can not be done if combat is active)
+		Grenade will be used on selected tile (can not be done outside of combat, for obvious reasons)
+	: I to close Inventory
+: R to Reload Weapon
+: E to Analyze enemy at target location (fails if empty tile is selected)
+: Enter to end turn (when not in auto mode)
+: Tab to enter auto-mode (turn will be automaticely ended if actions are 0, fastens stuff into something that feels less turnbased, but also less obvious whats happening)
+
+
+
+Moving, Attacking, Reloading, using Items and equipping Items take on actions each.
+Ending your turn refills your actions.

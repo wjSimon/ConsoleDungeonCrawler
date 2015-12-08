@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D5343BE-1B26-4A23-921A-27291377437F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ConsoleDungeonCrawler</RootNamespace>
+    <AssemblyName>ConsoleDungeonCrawler</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\ProtoTest\Build\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A489C22E3E2FED94DF0671F4590DD0A9CD567783</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ConsoleDungeonCrawler_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccuracyImpact.cs" />
+    <Compile Include="Traits\ActionTrait.cs" />
+    <Compile Include="AmmoFacade.cs" />
+    <Compile Include="Ammo.cs" />
+    <Compile Include="ConsoleMapSelectionController.cs" />
+    <Compile Include="Traits\HookedTrait.cs" />
+    <Compile Include="LevelFromImageOutputInfo.cs" />
+    <Compile Include="MapsStates.cs" />
+    <Compile Include="MenuStates.cs" />
+    <Compile Include="Traits\AccuracyTrait.cs" />
+    <Compile Include="Actor.cs" />
+    <Compile Include="Application.cs" />
+    <Compile Include="Armor.cs" />
+    <Compile Include="Traits\HeavyInjuryTrait.cs" />
+    <Compile Include="ClipType.cs" />
+    <Compile Include="ConsoleGameRenderer.cs" />
+    <Compile Include="ConsoleInventoryController.cs" />
+    <Compile Include="ConsoleMenuActions.cs" />
+    <Compile Include="ConsoleMenuController.cs" />
+    <Compile Include="ConsoleMenuRenderer.cs" />
+    <Compile Include="ConsolePixel.cs" />
+    <Compile Include="ConsolePlayerController.cs" />
+    <Compile Include="ConsolePseudoRaycast.cs" />
+    <Compile Include="ConsoleUI.cs" />
+    <Compile Include="ConsoleView.cs" />
+    <Compile Include="DamageImpact.cs" />
+    <Compile Include="Traits\DamageTrait.cs" />
+    <Compile Include="Traits\DamageTypeTrait.cs" />
+    <Compile Include="Direction.cs" />
+    <Compile Include="Door.cs" />
+    <Compile Include="EnemyController.cs" />
+    <Compile Include="EnemyLibrary.cs" />
+    <Compile Include="GameData.cs" />
+    <Compile Include="GameObject.cs" />
+    <Compile Include="GameState.cs" />
+    <Compile Include="GameStates.cs" />
+    <Compile Include="IBaseController.cs" />
+    <Compile Include="IBaseState.cs" />
+    <Compile Include="IBaseView.cs" />
+    <Compile Include="IConsoleRenderer.cs" />
+    <Compile Include="IGameDataChangeListener.cs" />
+    <Compile Include="IGameStateChangeListener.cs" />
+    <Compile Include="ILevelBuilder.cs" />
+    <Compile Include="IImpactBehaviour.cs" />
+    <Compile Include="Inventory.cs" />
+    <Compile Include="Item.cs" />
+    <Compile Include="ItemLibrary.cs" />
+    <Compile Include="ItemWrapper.cs" />
+    <Compile Include="Traits\ITraitBehaviour.cs" />
+    <Compile Include="ITrigger.cs" />
+    <Compile Include="Level.cs" />
+    <Compile Include="LevelFromImage.cs" />
+    <Compile Include="LevelGenerator.cs" />
+    <Compile Include="MasterControlProgram.cs" />
+    <Compile Include="MenuState.cs" />
+    <Compile Include="Traits\PenetrationTrait.cs" />
+    <Compile Include="PickUp.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Traits\RangeTrait.cs" />
+    <Compile Include="Score.cs" />
+    <Compile Include="Slot.cs" />
+    <Compile Include="Throwable.cs" />
+    <Compile Include="Tile.cs" />
+    <Compile Include="Traits\Trait.cs" />
+    <Compile Include="TriggerObject.cs" />
+    <Compile Include="Usable.cs" />
+    <Compile Include="Vector2.cs" />
+    <Compile Include="TerraformImpact.cs" />
+    <Compile Include="Weapon.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="ConsoleDungeonCrawler_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

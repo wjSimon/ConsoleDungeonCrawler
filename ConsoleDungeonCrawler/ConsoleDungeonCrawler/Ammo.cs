@@ -1,0 +1,4 @@
+﻿public enum Ammo
+{
+//CURRENTLY NOT IN USE BECAUSE OF FACADE
+}
