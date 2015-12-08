@@ -101,6 +101,14 @@ public class ConsoleMapSelectionController : IBaseController
                     Application.NewGame();
                 }
                 break;
+
+            case ConsoleKey.Escape:
+                Application.ChangeGameState(GameStates.MENU);
+                break;
+
+            case ConsoleKey.Backspace:
+                Application.ChangeGameState(GameStates.MENU);
+                break;
         }
     }
 }

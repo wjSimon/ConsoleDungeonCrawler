@@ -29,8 +29,7 @@ public class GameState : IBaseState
         if (state == GameStates.MAPS) MasterControlProgram.SetController(new ConsoleMapSelectionController());
         if (state == GameStates.FINISH)
         {
-            MasterControlProgram.SetController(null);
-            MasterControlProgram.UpdateView();
+            MasterControlProgram.SetController(new ConsoleEndScreenController());
         }
     }
 

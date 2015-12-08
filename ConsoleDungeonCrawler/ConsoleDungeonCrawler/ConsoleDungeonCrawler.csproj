@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccuracyImpact.cs" />
+    <Compile Include="ConsoleEndScreenController.cs" />
     <Compile Include="Traits\ActionTrait.cs" />
     <Compile Include="AmmoFacade.cs" />
     <Compile Include="Ammo.cs" />
