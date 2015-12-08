@@ -506,17 +506,8 @@ public class Actor : GameObject
             data.combat = false;
         }
 
-        for (int i = 0; i < traits.Count; i++)
-        {
-            if (traits[i].name == "equip")
-            {
-                RemoveTrait(traits[i]);
-            }
-        }
-
         Weapon.content = r;
         actions--;
-        ApplyTraits();
     }
 
     public void EquipArmor(Armor a)
@@ -556,6 +547,8 @@ public class Actor : GameObject
         level++;
 
         data.combatlog.Add("LEVEL UP! Level " + level.ToString() + " reached");
+        data.combatlog.Add("Max health increased!");
+        data.combatlog.Add("Accuracy increased!");
 
         if (level > 10)
         {

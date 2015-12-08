@@ -30,6 +30,7 @@ public class GameState : IBaseState
         if (state == GameStates.FINISH)
         {
             MasterControlProgram.SetController(null);
+            MasterControlProgram.UpdateView();
         }
     }
 

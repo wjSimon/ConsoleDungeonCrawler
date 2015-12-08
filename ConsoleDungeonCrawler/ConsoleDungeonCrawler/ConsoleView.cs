@@ -180,6 +180,14 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
             }
         }
 
+        content = "YOU DIED";
+        label = content.ToCharArray();
+        for (int i = 0; i < label.Length; i++)
+        {
+            f = ConsoleColor.White;
+            uiContent[0, i] = new ConsolePixel(label[i], f);
+        }
+
         content = "GAME OVER : SCORE REACHED " + data.score.GetScore().ToString();
         label = content.ToCharArray();
         for (int i = 0; i < label.Length; i++)
@@ -188,7 +196,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
             uiContent[0, i] = new ConsolePixel(label[i], f);
         }
 
-        //Process all end game information here - I'M VERY SORRY, I KNOW ITS NOT 100% MODEL-VIEW-CONTROL
+        //Process all end game information here
 
         content = "PRESS ANY KEY TO RETURN TO MAIN MENU";
         label = content.ToCharArray();
@@ -197,9 +205,6 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
             f = ConsoleColor.Green;
             uiContent[1, i] = new ConsolePixel(label[i], f);
         }
-
-        Console.ReadKey();
-        Application.ChangeGameState(GameStates.MENU);
     }
 
     public void RenderGame()

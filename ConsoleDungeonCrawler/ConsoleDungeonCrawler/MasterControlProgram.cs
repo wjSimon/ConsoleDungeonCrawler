@@ -16,7 +16,7 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
 
     public static bool running = true;
     public GameData data;
-    public IBaseView view;
+    private static IBaseView view;
     private static IBaseController controller;
 
     private int turn = -1;
@@ -110,6 +110,16 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
     public static void SetController(IBaseController c)
     {
         controller = c;
+    }
+
+    public static void SetView(IBaseView v)
+    {
+        view = v;
+    }
+
+    public static void UpdateView()
+    {
+        view.Execute();
     }
 
     public static IBaseController GetController()

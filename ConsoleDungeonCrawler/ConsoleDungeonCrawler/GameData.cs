@@ -45,9 +45,6 @@ public class GameData
         Application.GetData().inventory.Add(player.Weapon.content, 1);
         Application.GetData().inventory.Add(player.Armor.content, 1);
 
-        Application.GetData().inventory.Add(ItemLibrary.Get().grenadeList[1], 1);
-        Application.GetData().inventory.Add(ItemLibrary.Get().armorList[4], 1);
-
         //DEBUGGING ONLY, DONT TOUCH IF YOU DONT KNOW WHAT YOU'RE DOING
         /*
         Application.GetData().inventory.Add(ItemLibrary.Get().items[0], 1);

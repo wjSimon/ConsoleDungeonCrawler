@@ -12,7 +12,7 @@ public class LevelFromImage : ILevelBuilder
     public int enemyCount = 3;
     public LevelFromImageOutputInfo output = new LevelFromImageOutputInfo();
     string path = "layout_all.bmp";
-    Random rng = new Random(); 
+    Random rng = new Random();
     Bitmap btm;
 
     public LevelFromImage()
@@ -32,7 +32,9 @@ public class LevelFromImage : ILevelBuilder
 
     public void Init()
     {
-        btm = new Bitmap(new FileStream(path, FileMode.Open));
+        FileStream tmp = new FileStream(path, FileMode.Open);
+        btm = new Bitmap(tmp);
+        tmp.Close();
     }
 
     public Level Generate()
@@ -49,6 +51,9 @@ public class LevelFromImage : ILevelBuilder
         levelGen.pickUps.Add(SpawnPickup(new Vector2(1, 3), 1));
         levelGen.pickUps.Add(SpawnPickup(new Vector2(2, 3), 2));
         levelGen.pickUps.Add(SpawnPickup(new Vector2(3, 3), 3));
+
+
+        btm.Dispose();
         return levelGen;
     }
 
