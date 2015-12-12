@@ -59,6 +59,13 @@ public class GameData
         Application.GetData().inventory.Add(ItemLibrary.Get().usableList[2], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[1], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[2], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[3], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[4], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[5], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().armorList[0], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().armorList[1], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().armorList[2], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().armorList[3], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().keyList[0], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().keyList[1], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().keyList[2], 1);

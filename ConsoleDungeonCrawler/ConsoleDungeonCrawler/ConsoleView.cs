@@ -30,7 +30,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
 
     public void Execute()
     {
-        Console.Clear(); //Very important for the view to actually work correctly, uncomment and test first before continuing if somethings looks wrong
+        //Console.Clear(); //Very important for the view to actually work correctly, uncomment and test first before continuing if somethings looks wrong
         if (Application.GetState().Get() == GameStates.MENU)
         {
             RenderMenu();
@@ -555,6 +555,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
             char[] label;
             string content = "Inventory:";
             int inventoryOffset = 0;
+            int scrolling = 5;
             label = content.ToCharArray();
             for (int i = 0; i < label.Length; i++)
             {
@@ -569,15 +570,16 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
 
             if (data.inventory.content.Count > 0)
             {
-                if (data.currentItem > 5 && data.currentItem + inventoryOffset < data.inventory.content.Count)
+                //Flat Numbers based on the maximum of 10 items that can be shown simultaneously, and the arbitrary decision to start scrolling in the middle
+                if (data.currentItem > scrolling && data.currentItem + inventoryOffset < data.inventory.content.Count)
                 {
-                    inventoryOffset += data.currentItem - 5;
+                    inventoryOffset += data.currentItem - scrolling; 
                 }
-                if (data.currentItem + inventoryOffset > data.inventory.content.Count-1)
+                if (10 + inventoryOffset >= data.inventory.content.Count)
                 {
-                    inventoryOffset = 4;
+                    inventoryOffset = Math.Max(0, data.inventory.content.Count - 11);
                 }
-
+                
                 for (int i = 0; i < Math.Min(11, data.inventory.content.Count); i++)
                 {
                     content = data.inventory.content[i+inventoryOffset].item.name;

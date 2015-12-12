@@ -15,6 +15,12 @@ public class Vector2
         this.y = 0;
     }
 
+    public Vector2(Vector2 v)
+    {
+        this.x = v.x;
+        this.y = v.y;
+    }
+
     public Vector2(float x, float y)
     {
         this.x = x;

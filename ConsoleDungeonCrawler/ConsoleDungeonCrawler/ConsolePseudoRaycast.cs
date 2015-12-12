@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 public class ConsolePseudoRaycast
 {
-    //THIS RAYCAST ONLY WORKS FOR THIS PROJECT SPECIFICALLY; DONT PORT. UNITY'S IS BETTER ANYWAYS
-    //MAYBE MAKE USUABLE BY OUTPUT STRUCT?!?!?!?!??!?!?
+    //THIS RAYCAST SUCKS HARD; REALLY HARD.
     public ConsolePseudoRaycast()
     {
     }
@@ -17,7 +16,8 @@ public class ConsolePseudoRaycast
         bool hit = false;
         bool run = true;
         Vector2 distance = GetDistanceVector(source, target_position);
-        Vector2 current = new Vector2(0,0);
+        Vector2 top = Vector2.ZERO;
+        Vector2 bot = Vector2.ZERO;
         Vector2 storage = new Vector2(0,0);
 
         float x = distance.x;
@@ -26,24 +26,27 @@ public class ConsolePseudoRaycast
         while (run)
         {
             int count = 0;
-            current = Vector2.Equalize(target_position, source);
 
-            //PLEASE FIND BETTER WAY
+            //Has to run each Raycast twice for consistency. Has some questionable results with corners...
+            top = new Vector2(Vector2.Equalize(target_position, source));
+            //bot = new Vector2(Vector2.Equalize(source, target_position));
+
+            //PLEASE FIND BETTER WAY - GOOD FUCKING JOB, LOSER
             if (x > 0) x -= 1;
             if (x < 0) x += 1;
             if (y > 0) y -= 1;
             if (y < 0) y += 1;
 
-            //Console.ReadKey();
-
-            if (Application.GetData().level.structure[(int)(current.x), (int)(current.y)].substance == ClipType.WALL)
+            if (Application.GetData().level.structure[(int)(top.x), (int)(top.y)].substance == ClipType.WALL)
             {
-                Vector2 wall = new Vector2(current.x, current.y);
                 hit = true;
+                break;
             }
 
             count++;
 
+
+            Console.ReadKey();
             if (x == 0 && y == 0)
             {
                 run = false;

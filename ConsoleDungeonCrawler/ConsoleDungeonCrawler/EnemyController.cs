@@ -53,7 +53,7 @@ public class EnemyController : IBaseController
 
                         if (Vector2.Distance(new Vector2(enemies[i].position.x, enemies[i].position.y), p_pos) <= enemies[i].Weapon.content.range)
                         {
-                            enemies[i].Weapon.content.Attack(data.player.position);
+                            enemies[i].Weapon.content.Attack(enemies[i].position, data.player.position);
                         }
                         else
                         {                        
@@ -82,13 +82,12 @@ public class EnemyController : IBaseController
             {
                 random = false;
                 hit = false;
-                if (Vector2.Distance(new Vector2(enemies[i].position.x, enemies[i].position.y), p_pos) <= enemies[i].Weapon.content.range + aggro)
+                if (Vector2.Distance(new Vector2(enemies[i].position.x, enemies[i].position.y), p_pos) <= enemies[i].Weapon.content.range)
                 {
                     if ((ConsolePseudoRaycast.CastRay(new Vector2(enemies[i].position.x, enemies[i].position.y), new Vector2(p_pos.x, p_pos.y))))
                     {
                         //ConsoleView.errorMessage = "target obscured (RayCast)";
                         hit = true;
-                        random = true;
                     }
                     if (!hit)
                     {
@@ -96,8 +95,7 @@ public class EnemyController : IBaseController
                         bool moved = false;
                         if (Vector2.Distance(new Vector2(enemies[i].position.x, enemies[i].position.y), p_pos) <= enemies[i].Weapon.content.range)
                         {
-                            enemies[i].Weapon.content.Attack(data.player.position);
-                            aggro = 3;
+                            enemies[i].Weapon.content.Attack(enemies[i].position, data.player.position);
                         }
                         else
                         {
@@ -144,7 +142,7 @@ public class EnemyController : IBaseController
 
                         if (Vector2.Distance(new Vector2(enemies[i].position.x, enemies[i].position.y), p_pos) <= enemies[i].Weapon.content.range)
                         {
-                            enemies[i].Weapon.content.Attack(data.player.position);
+                            enemies[i].Weapon.content.Attack(enemies[i].position, data.player.position);
                         }
                         else
                         {                           

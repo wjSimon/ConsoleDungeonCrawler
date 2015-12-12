@@ -457,6 +457,7 @@ public class Actor : GameObject
         return result;
     }
 
+    /*
     private void ApplyTraits()
     {
         //Reset();
@@ -468,17 +469,22 @@ public class Actor : GameObject
             }
         }
     }
+    */
 
     public void AddTrait(Trait trait)
     {
         traits.Add(trait);
-        ApplyTraits();
+        for (int i = 0; i < trait.behaviour.Count; i++)
+        {
+            trait.behaviour[i].Execute(this);
+        }
     }
     public void AddTrait(int duration, string name, ITraitBehaviour trait)
     {
         traits.Add(new Trait(duration, name, trait));
-        ApplyTraits();
+        trait.Execute(this);
     }
+
     public void RemoveTrait(string name)
     {
         Trait trait = null;

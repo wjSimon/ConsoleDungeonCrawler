@@ -80,8 +80,10 @@ public class Weapon : Item
     public string damagetype;
     public float penetration;
 
+    //For the player
     public void Attack()
     {
+        //Console.WriteLine("WEAPON ATTACKING");
         GameData data = Application.GetData();
         int hits = 1;
 
@@ -95,7 +97,7 @@ public class Weapon : Item
             return;
         }
 
-        if (CheckTarget(new Vector2(data.player.selector.position.x, data.player.selector.position.y)) != null)
+        if (CheckTarget(new Vector2(data.player.position), new Vector2(data.player.selector.position)) != null)
         {
             if (this.name == "submachine_gun")
             {
@@ -105,10 +107,11 @@ public class Weapon : Item
             {
                 if (CheckAccuracy())
                 {
-                    if (CheckTarget(new Vector2(data.player.selector.position.x, data.player.selector.position.y)) != null)
+                    //Have to do it twice to check if target is still alive so it doesnt TakeDamage() on null
+                    if (CheckTarget(new Vector2(data.player.position), new Vector2(data.player.selector.position)) != null)
                     {
                         data.combatlog.Add(/*DateTime.Now.Hour + ":" + DateTime.Now.Minute + */"Target found. Dealing damage...");
-                        CheckTarget(new Vector2(data.player.selector.position.x, data.player.selector.position.y)).TakeDamage(damage, damagetype, penetration);
+                        CheckTarget(new Vector2(data.player.position), new Vector2(data.player.selector.position)).TakeDamage(damage, damagetype, penetration);
                     }
 
                 }
@@ -129,18 +132,19 @@ public class Weapon : Item
         }
     }
 
-    public void Attack(Vector2 target)
+    //For all enemies
+    public void Attack(Vector2 source, Vector2 target)
     {
         GameData data = Application.GetData();
-        if (CheckTarget(target) != null)
+        if (CheckTarget(source, target) != null)
         {
             if (CheckAccuracy())
             {
-                CheckTarget(target).TakeDamage(damage, damagetype, penetration);
+                CheckTarget(source, target).TakeDamage(damage, damagetype, penetration);
             }
             else
             {
-                data.combatlog.Add(/*DateTime.Now.Hour + ":" + DateTime.Now.Minute + */" enemy missed. No damage taken.");
+                data.combatlog.Add(/*DateTime.Now.Hour + ":" + DateTime.Now.Minute + */"Enemy missed. No damage taken.");
             }
 
             data.player.actions -= 1;
@@ -206,7 +210,7 @@ public class Weapon : Item
         Application.GetData().player.actions -= 1;
     }
 
-    public Actor CheckTarget(Vector2 target)
+    public Actor CheckTarget(Vector2 source, Vector2 target)
     {
         GameData data = Application.GetData();
         Actor actor = new Actor();
@@ -216,7 +220,8 @@ public class Weapon : Item
         {
             if (data.collision[i].position.x == target.x && data.collision[i].position.y == target.y)
             {
-                if ((ConsolePseudoRaycast.CastRay(new Vector2(data.player.position.x, data.player.position.y), new Vector2(target.x, target.y))))
+                //Had to new the Vectors because there was some weird position switching going on
+                if ((ConsolePseudoRaycast.CastRay(new Vector2(source), new Vector2(target))))
                 {
                     return null;
                 }
