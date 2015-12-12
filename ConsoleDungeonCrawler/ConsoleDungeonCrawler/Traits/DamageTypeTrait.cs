@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// ITraitBehaviour that modifies the targets DamageType
+/// </summary>
 public class DamageTypeTrait : ITraitBehaviour
 {
     private string type;
@@ -15,6 +18,7 @@ public class DamageTypeTrait : ITraitBehaviour
     }
     public void Execute(Actor actor)
     {
+        //need to store the old damagetype because it gets overwritten for the OnRemove()
         storage = actor.Weapon.content.damagetype;
         actor.Weapon.content.damagetype = type;
     }

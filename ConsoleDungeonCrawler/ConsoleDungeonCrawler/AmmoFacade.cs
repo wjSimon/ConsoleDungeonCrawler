@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// Class to easily initiate AmmoMod Items. Assign the amounts of stats to change and aswell as the name for the item in inventory and
+/// the class will create a Usable with the functionality of the "ammo_mod" Trait tag
+/// </summary>
 public class AmmoFacade
 {
     private static AmmoFacade instance = new AmmoFacade();

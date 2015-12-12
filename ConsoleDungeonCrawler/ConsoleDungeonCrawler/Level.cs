@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Class containing all information regarding the levels structure and content. Built in LevelGenerator, stored in GameData
+/// </summary>
 public class Level
 {
 

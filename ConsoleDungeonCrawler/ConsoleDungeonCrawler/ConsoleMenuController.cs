@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Handles the Main Menu, gets assinged automatically when the state is switched to Menu.
+/// </summary>
 public class ConsoleMenuController : IBaseController
 {
     public GameData data;
@@ -18,6 +20,7 @@ public class ConsoleMenuController : IBaseController
         current = new MenuStates();
         current = MenuStates.NEW;
 
+        //Creates a list with the content of the MenuStates() enum so we can access them via index
         states = new List<MenuStates>();
         foreach (MenuStates value in Enum.GetValues(typeof(MenuStates)))
         {
@@ -29,6 +32,7 @@ public class ConsoleMenuController : IBaseController
 
     public void Execute()
     {
+        //inputs scroll through the list via increment/decrement of the index
         data = Application.GetData();
         state = Application.GetState();
 
@@ -58,8 +62,11 @@ public class ConsoleMenuController : IBaseController
                     index++;
                 }
 
+                //current is set to the state corresponding to the index
                 current = states[index];
                 break;
+
+                //Enter checks what menustate current is and performs according action
             case ConsoleKey.Enter:
                 if (current == MenuStates.NEW)
                 {

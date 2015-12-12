@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 public class ConsoleEndScreenController : IBaseController
 {
+    //Needs its own controller to ensure that view is not couppled
     public void Execute()
     {
         Console.ReadKey();

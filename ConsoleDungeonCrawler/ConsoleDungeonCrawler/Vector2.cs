@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
+/// <summary>
+/// Stores two two-float values and provides several functions based around their interaction
+/// </summary>
 public class Vector2
 {
     public static readonly Vector2 ZERO = new Vector2(0, 0);
@@ -36,20 +38,6 @@ public class Vector2
 
         result.x = a.x + b.x;
         result.y = a.y + b.y;
-
-        return result;
-    }
-
-    public static double CrossDistance(Vector2 a, Vector2 b)
-    {
-        double result = 0;
-
-        double x = Math.Abs(a.x - b.x);
-        double y = Math.Abs(b.x - b.y);
-
-        if (x > y) result = x;
-        if (y > x) result = y;
-        else result = -1;
 
         return result;
     }

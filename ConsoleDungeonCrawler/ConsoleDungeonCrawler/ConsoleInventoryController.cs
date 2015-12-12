@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// Inventory Functionality ingame, to add functionality, add keys into the switch
+/// </summary>
 class ConsoleInventoryController : IBaseController
 {
     GameData data = Application.GetData();

@@ -1,4 +1,5 @@
-﻿public enum Direction
+﻿//COLD IS THE VOID
+public enum Direction
 {
     UP,
     DOWN,

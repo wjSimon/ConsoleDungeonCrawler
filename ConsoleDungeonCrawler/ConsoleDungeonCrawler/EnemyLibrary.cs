@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// Library containing all pre-made enemies that can then be assigned within LevelGenerator
+/// </summary>
 public class EnemyLibrary
 {
     private static EnemyLibrary instance;
@@ -12,6 +14,7 @@ public class EnemyLibrary
     public List<Actor> rangedList = new List<Actor>();
     public List<Actor> bossList = new List<Actor>();
 
+    //Same style as the ItemLibrary, pretty straight forward
     public void Init()
     {
         meleeList.Add(new Actor("alien_assaulter", "melee_calm", 5, new Weapon(ItemLibrary.Get().enemyweaponList[0]), new Armor(ItemLibrary.Get().enemyarmorList[0])));

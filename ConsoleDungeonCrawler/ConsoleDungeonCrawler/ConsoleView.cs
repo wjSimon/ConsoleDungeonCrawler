@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// Converts input into a ConsolePixel Array to allow for UI Positioning. Assigns and outputs information based on Application and Gamestate
+/// </summary>
 public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeListener
 {
     public static string errorMessage = "";
@@ -21,16 +24,22 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
     public IConsoleRenderer currentRenderer;
     private readonly Dictionary<string, char> TILE_CHARS = new Dictionary<string, char>();
     private readonly Dictionary<string, char> ITEM_CHARS = new Dictionary<string, char>();
+
+    //Offsets for the Gamewindow position
     private Vector2 loff = new Vector2(2, 0);
     private Vector2 offset = Vector2.ZERO;
+
+    //The "Game" window, used to place the UI
     private int viewH = 31;
     private int viewW = 31;
 
+    //The output array, size is more or less arbitrary (current values are minimum so it doesnt go out-of-range on current content) LONG enemy names etc. might 
+    //require more y-axis space
     public ConsolePixel[,] uiContent = new ConsolePixel[44, 55];
 
     public void Execute()
     {
-        //Console.Clear(); //Very important for the view to actually work correctly, uncomment and test first before continuing if somethings looks wrong
+        Console.Clear(); //Very important for the view to actually work correctly, uncomment and test first before continuing if somethings looks wrong
         if (Application.GetState().Get() == GameStates.MENU)
         {
             RenderMenu();
@@ -240,6 +249,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
         /**/
 
         //Player Actions stuff
+        //My naming is perfect.
         int debug = data.player.maxActions;  // player.maxActions
         int debug2 = data.player.actions; // player.Actions
         for (int i = 0; i < debug; i++)
@@ -302,33 +312,16 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
         {
             for (int j = 0; j < viewW; j++)
             {
-                //Todo: Dont render whole level
-                //
-                //REALLY SIMPLE METHOD, CAN PROBABLY DO BETTER
-                /*
-                if (Vector2.Distance(new Vector2(i, j), data.player.position) > 5)
-                    continue;
-                    */
-
                 int x = (int)offset.x + i;
                 int y = (int)offset.y + j;
 
                 if ((x >= 0 && x < data.level.structure.GetLength(0)) && (y >= 0 && y < data.level.structure.GetLength(1)))
                 {
                     symbol = TILE_CHARS[data.level.structure[x, y].terrain];
-                    //?+i/?+j for the level position offset
                     f = ConsoleColor.Gray;
                     b = ConsoleColor.Black;
                     uiContent[i + (int)loff.x, j] = new ConsolePixel(symbol, f, b);
                 }
-                /*
-                else
-                {
-                    f = ConsoleColor.Black;
-                    b = ConsoleColor.DarkGreen;
-                    uiContent[i + (int)loff.x, j] = new ConsolePixel(' ', f, b);
-                }
-                /**/
             }
         }
         /**/
@@ -570,7 +563,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
 
             if (data.inventory.content.Count > 0)
             {
-                //Flat Numbers based on the maximum of 10 items that can be shown simultaneously, and the arbitrary decision to start scrolling in the middle
+                //Flat Numbers based on the maximum of 10 items that can be shown simultaneously, and the arbitrary decision to start scrolling in the middle. Also, Fuck Inventory scrolling. Took 3 fucking days to get this right. 3 DAYS.
                 if (data.currentItem > scrolling && data.currentItem + inventoryOffset < data.inventory.content.Count)
                 {
                     inventoryOffset += data.currentItem - scrolling; 
@@ -638,7 +631,6 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
 
             if (data.inv && data.currentItem < data.inventory.content.Count)
             {
-                //data.currentItem = 0;
                 ItemWrapper current = data.inventory.content[data.currentItem];
 
                 infoLog.Add("//////////////////////");

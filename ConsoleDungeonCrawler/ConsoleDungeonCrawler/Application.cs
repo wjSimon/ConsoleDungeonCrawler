@@ -6,6 +6,7 @@ using System.Text;
 
 public class Application
 {
+    //Has the current state of the application stored. Data, Gamestate and Enemy AI are stored here, aswell as some functions
     public Application()
     {
     }

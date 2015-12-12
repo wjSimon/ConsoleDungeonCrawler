@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// IImpactBehaviour that damages all enemies in radius by the amount of dmg
+/// </summary>
 class DamageImpact : Item, IImpactBehaviour
 {
     GameData data;

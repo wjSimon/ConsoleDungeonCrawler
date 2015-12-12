@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Stores the player's score as single values and multipliers
+/// </summary>
 public class Score {
 
     public static List<int> score = new List<int>();
@@ -19,6 +21,7 @@ public class Score {
         multiplier.Add(mult);
     }
 
+    //Calculates and returns the actual score
     public int GetScore()
     {
         int result = 0;

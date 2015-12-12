@@ -1,4 +1,4 @@
-
+//NOT IN USE; MENUSTATES USED INSTEAD
 public enum ConsoleMenuActions
 {
     NEW_GAME,

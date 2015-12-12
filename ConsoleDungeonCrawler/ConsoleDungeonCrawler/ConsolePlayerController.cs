@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Handles input for player character movement, automatically assigned when Gamestate is changed to Game
+/// </summary>
 public class ConsolePlayerController : IBaseController, IGameDataChangeListener, IGameStateChangeListener
 {
     public GameData data;
@@ -85,6 +87,7 @@ public class ConsolePlayerController : IBaseController, IGameDataChangeListener,
 
     }
 
+    //Functions that handle all the input outside of the switch so we can access them if necessary (needs to be changed to public though)
     private void OpenDoor()
     {
         for (int i = 0; i < data.level.doors.Count; i++)

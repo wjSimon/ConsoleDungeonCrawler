@@ -5,7 +5,9 @@ using System.Linq;
 using System.Text;
 using System.IO;
 using System.Drawing;
-
+/// <summary>
+/// A LevelBuilder that Generates a levels structure and non-dynamic game objects through a bitmap file
+/// </summary>
 public class LevelFromImage : ILevelBuilder
 {
     public int pickUpCount = 5;
@@ -67,7 +69,7 @@ public class LevelFromImage : ILevelBuilder
         {
             for (int j = 0; j < btm.Height; j++)
             {
-                //Console.Write(btm.GetPixel(i, j).ToArgb());
+                //Checks color, assigns type
                 if (btm.GetPixel(i, j).ToArgb() == Color.Black.ToArgb())
                 {
                     levelGenStructure[i, j] = new Tile("wall", ClipType.WALL);
@@ -90,6 +92,7 @@ public class LevelFromImage : ILevelBuilder
         {
             for (int j = 0; j < btm.Height; j++)
             {
+                //MORE COLORS
                 if (btm.GetPixel(i, j).ToArgb() == Color.Red.ToArgb())
                 {
                     level.doors.Add(new Door("door", "red", new Vector2(i, j), false));
@@ -129,6 +132,8 @@ public class LevelFromImage : ILevelBuilder
         }
     }
 
+
+    //Found in LevelGenerator aswell, double so you dont have to combine them necessarily
     private PickUp SpawnPickup(Vector2 pos, int i)
     {
         Random rng = new Random();

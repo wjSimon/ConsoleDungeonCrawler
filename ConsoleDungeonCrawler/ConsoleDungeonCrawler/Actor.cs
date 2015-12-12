@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
-public class Actor : GameObject
+/// <summary>
+/// Universal class for player and enemy objects
+/// </summary>
+public class Actor : GameObject //Name + Position by GameObject
 {
 
     public Actor()
@@ -81,6 +83,7 @@ public class Actor : GameObject
 
     public bool Move(Direction dir)
     {
+        //One hell of a function, dont bother if you don't have to, as it seems to work.
         Vector2 pos = new Vector2();
         data = Application.GetData();
         bool moved = false;
@@ -93,13 +96,13 @@ public class Actor : GameObject
 
         switch (dir)
         {
+            //Cases if the position that we're trying to move to (position) is not occupied by an enemy or wall, done for character and selector seperately
             case Direction.VOID:
 
                 return true;
 
             case Direction.UP:
-                //SMARTGIT DEMONSTRATION COMMENT
-                //change -5/+5 to temporary range, based on what is being used for weapon ranges and stuff
+                //SMARTGIT DEMONSTRATION COMMENT - Left that in because I like it.
 
                 //------------------------------------------------------------
                 if (!(data.combat) && position.x - 1 < 0)
@@ -128,7 +131,7 @@ public class Actor : GameObject
                 }
 
                 //------------------------------------------------------------
-                pos.x -= 1;
+                pos.x -= 1; //If it does not return false pos is set
 
                 break;
             //------------------------------------------------------------
@@ -210,6 +213,7 @@ public class Actor : GameObject
                 break;
         }
 
+        //here we apply pos to the player position and check for triggers being entered (don't trigger until MasterControlProgram.EndTurn())
         if (!data.combat)
         {
             path.Add(position);
@@ -236,12 +240,14 @@ public class Actor : GameObject
             }
         }
 
+        //applies pos to selector position
         if (data.combat)
         {
             selector.position = new Vector2((int)(selector.position.x + pos.x), (int)(selector.position.y + pos.y));
             moved = true;
         }
 
+        //PickUps getting picked up after the player was moved, just checks if positions overlay
         for (int i = 0; i < data.level.pickUps.Count; i++)
         {
             if (position.x == data.level.pickUps[i].position.x && position.y == data.level.pickUps[i].position.y)
@@ -252,6 +258,8 @@ public class Actor : GameObject
                 }
             }
         }
+
+        //returns wheter the actor was moved or not. Necessary for enemy AI to check if the move command we gave them didn't get caught up in a wall etc.
         return moved;
     }
     /// <summary>
@@ -260,6 +268,8 @@ public class Actor : GameObject
     /// <param name="a"></param>
     /// <param name="b"></param>
     /// <returns></returns>
+
+    // Some "math" backup for the Enemy AI, very simple function that return you the diagonal as an Array towards the target
     public Direction[] DirectionTowards(Vector2 b)
     {
         Direction[] dir = new Direction[] { Direction.VOID, Direction.VOID };
@@ -348,6 +358,8 @@ public class Actor : GameObject
 
     private float ApplyArmor(float value, string dmgtype, Armor armor, float pen)
     {
+        //Check armor and damage types to calculate the damage an actor takes from an attack. Had way too much fun with this one.
+        //Also handles interactions between certain combinations, like adding HeavyInjuryTrait when hit by flechets
         float result = value;
 
         if (armor.armortype == "none" || armor.armortype == "fabric") return value;
@@ -471,6 +483,7 @@ public class Actor : GameObject
     }
     */
 
+    //Adds a Trait and executes all its behaviours onto the actor, has two ways to access it because convenience
     public void AddTrait(Trait trait)
     {
         traits.Add(trait);
@@ -485,6 +498,7 @@ public class Actor : GameObject
         trait.Execute(this);
     }
 
+    //Removes a Trait, either by name (see below) by the actual Trait if we have access to it. The name one almost excusively used for the removal by tag
     public void RemoveTrait(string name)
     {
         Trait trait = null;
@@ -527,6 +541,9 @@ public class Actor : GameObject
             data.combat = false;
         }
 
+        //Removes the current armors trait and later applies the new armors trait. 
+        if (Armor.content.trait.name == "equip") RemoveTrait(Armor.content.trait);
+        /*
         for (int i = 0; i < traits.Count; i++)
         {
             if (traits[i].name == "equip")
@@ -534,6 +551,7 @@ public class Actor : GameObject
                 RemoveTrait(traits[i]);
             }
         }
+        */
 
         Armor.content = a;
         actions--;
@@ -545,6 +563,7 @@ public class Actor : GameObject
         data.combatlog.Add(exp.ToString() + " experience gained.");
         experience += exp;
 
+        //Formula is super simple, like my math skills. Was a last minute addition.
         if (experience >= level * 50 + ((level - 1) * 50))
         {
             LevelUp();
@@ -553,6 +572,7 @@ public class Actor : GameObject
 
     public void LevelUp()
     {
+        //No variable that holds this equation? Yep. If you change it in AddExperience(), change it here too.
         experience -= level * 50 + ((level - 1) * 50);
         level++;
 
@@ -562,6 +582,7 @@ public class Actor : GameObject
         data.combatlog.Add("Accuracy increased!");
         */
 
+        //Some if's that give you extra stuff if you level up to make progression worth something
         if (level > 10)
         {
             return;
@@ -603,18 +624,4 @@ public class Actor : GameObject
         path.RemoveAt(path.Count - 1);
         actions += 1;
     }
-
-    /*
-    public void Reset()
-    {
-        for (int i = 0; i < ItemLibrary.Get().weaponList.Count; i++)
-        {
-            if (ItemLibrary.Get().weaponList[i].name == this.Weapon.content.name)
-            {
-                this.Weapon.content = new Weapon(ItemLibrary.Get().weaponList[i]);
-            }
-        }
-    }
-    */
-
 }

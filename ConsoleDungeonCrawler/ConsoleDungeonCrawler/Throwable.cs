@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
+/// <summary>
+/// Grenade shell. Assign Impactbehaviours and execute Use()
+/// </summary>
 public class Throwable : Item
 {
     List<IImpactBehaviour> behaviour = new List<IImpactBehaviour>();

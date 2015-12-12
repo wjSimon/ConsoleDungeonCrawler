@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+/// <summary>
+/// Works the same the Menu Controller, handles the MapSelection and gets assigned automatically when the state is changed to MapSelect
+/// </summary>
 public class ConsoleMapSelectionController : IBaseController
 {
     public GameData data;

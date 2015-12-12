@@ -37,7 +37,9 @@ public class PickUp : GameObject
     {
         GameData data = Application.GetData();
         //Sequence spawn conditions
+        //Checks for the pre-assigned item-type, then processes
         #region Ammo
+        //Refills ammo, does not add any item
         if (item.type == "ammo")
         {
             data.combatlog.Add(/*DateTime.Now.Hour + ":" + DateTime.Now.Minute + */"Ammunition crate found.");
@@ -64,6 +66,7 @@ public class PickUp : GameObject
         }
         #endregion
         #region Medkit
+        //Refills health, does not add any item
         else if (item.type == "med")
         {
             data.combatlog.Add(/*DateTime.Now.Hour + ":" + DateTime.Now.Minute + */"Medkit found. Player health restored.");
@@ -72,6 +75,7 @@ public class PickUp : GameObject
         }
         #endregion
         #region Weapon
+        //Checks if you have all weapons already, if not it randomly rolls you one weapon that you do not have yet
         else if (item.type == "weap")
         {
             bool added = false;
@@ -149,31 +153,6 @@ public class PickUp : GameObject
         #region Grenades
         else if (item.type == "grenade")
         {
-            /*
-            bool added = false;
-            int count = 0;
-
-            while (true)
-            {
-                int current = rng.Next(0, ItemLibrary.Get().grenadeList.Count);
-                this.item = ItemLibrary.Get().grenadeList[current];
-
-                if (!data.inventory.Contains(this.item))
-                {
-                    data.inventory.Add(this.item, this.count);
-                    data.combatlog.Add("Grenade found. " + this.item.name + " was added to the inventory.");
-
-                    added = true;
-                    break;
-                }
-
-                count++;
-            }
-            if (!added)
-            {
-                data.combatlog.Add("Empty grenade found. Proceeding...");
-            }
-            /**/
             int current = rng.Next(0, ItemLibrary.Get().grenadeList.Count);
             this.item = ItemLibrary.Get().grenadeList[current];
             data.inventory.Add(this.item, this.count);
@@ -227,12 +206,13 @@ public class PickUp : GameObject
         }
         #endregion
 
-
+        //If it some other item (which should not happen), it gets added to the inventory raw
         else
         {
             data.inventory.Add(this.item, this.count);
         }
 
+        //Removes the pickUp from the level
         data.level.pickUps.Remove(this);
     }
 

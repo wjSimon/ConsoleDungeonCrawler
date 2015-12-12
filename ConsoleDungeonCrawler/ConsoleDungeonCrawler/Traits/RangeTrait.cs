@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// ITraitBehaviour that increases the targets Range
+/// </summary>
 public class RangeTrait : ITraitBehaviour
 {
     private float range;

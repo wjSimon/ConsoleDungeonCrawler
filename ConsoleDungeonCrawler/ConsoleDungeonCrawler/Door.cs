@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+/// <summary> 
+/// Door GameObject, the "opne" bool sets the ClipType of the tile overlaying with the doors position and can be opened or closed aswell as locked by a key.
+/// </summary>
 
+//This class is a door. It has more functionality than the RayCast. Why am I coding again?
 public class Door : GameObject
 {
     public bool open;

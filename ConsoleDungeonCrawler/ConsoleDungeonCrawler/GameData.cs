@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Contains all information that is only avaible for the current Game session. Gets newed once you start a new map etc.
+/// </summary>
 public class GameData
 {
     public Actor player;
@@ -80,7 +82,7 @@ public class GameData
     }
 
     /// <summary>
-    /// Little help here, since they're named little confusing.
+    /// Little help here, since they're named a little confusing.
     /// Those actually don't activate them in level or anything, but happen AFTER a subsystem has been triggered.
     /// If you want anything special to happen when the player activates a certain number of subsystems, do it here.
     /// If you have levels that use more/less than 3 subsystems mixed with levels that do use 3, you could rewrite so
@@ -113,6 +115,7 @@ public class GameData
             ActivateLevelFinish();
         }
     }
+    //Since its dynamic, we have to store it here instead of the LevelGenerator, the position (levelfinish) is set during the generation process however
     public void ActivateLevelFinish()
     {
         level.trigger.Add(new TriggerObject("endoflevel", levelfinish));

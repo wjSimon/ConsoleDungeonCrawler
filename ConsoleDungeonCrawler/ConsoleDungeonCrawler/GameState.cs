@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +18,7 @@ public class GameState : IBaseState
 
     public void Enter(GameStates state)
     {
+        //Only important function here, sets the correct controller for the correct gamestate
         this.state = state;
 
         if (state == GameStates.GAME) MasterControlProgram.SetController(new ConsolePlayerController());

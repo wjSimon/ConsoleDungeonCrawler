@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// PERMANENTLY decreases the accuracy of a target, damages them by (dmg) OnRemove(), choose "temp" tag to emulate the effect that's already integrated
+/// </summary>
 public class HeavyInjuryTrait : ITraitBehaviour
 {
     private int dmg;
@@ -19,6 +21,7 @@ public class HeavyInjuryTrait : ITraitBehaviour
 
     public void OnRemove(Actor actor)
     {
+        //ANYTHING.
         actor.TakeDamage(dmg, "true", 0);
     }
 }

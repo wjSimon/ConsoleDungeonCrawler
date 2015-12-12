@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Generates a level based on level building algorithm
+/// </summary>
 public class LevelGenerator : ILevelBuilder
 {
 
@@ -27,6 +29,7 @@ public class LevelGenerator : ILevelBuilder
     public Level Generate()
     {
         Level levelGen = new Level();
+        //Biggest cheat in the Application. The structure and several objects are built through an image which is then passed here to add enemies and pickups
         LevelFromImage lfi = new LevelFromImage();
         levelGen.structure = lfi.BuildStructure();
         lfi.AddObjectsFromImage(levelGen);
@@ -39,6 +42,7 @@ public class LevelGenerator : ILevelBuilder
         //levelGen.pickupSpawnPoints = SetPickupSpawnPoints();
         //levelGen.enemySpawnPoints = SetEnemySpawnPoints();
 
+        //Some math stuff - This is how much of everything is added to the level
         pickUpCount = ((levelGen.structure.GetLength(0) * levelGen.structure.GetLength(1)) / 100);
         //int factor = ((levelGen.structure.GetLength(0) + levelGen.structure.GetLength(1) / 100));
         int factor = 1;
@@ -60,7 +64,7 @@ public class LevelGenerator : ILevelBuilder
         }
         /**/
 
-
+        //Adds all enemies for the current levelstructure
         for (int i = 0; i < enemyCount; i++)
         {
             //int current = rng.Next(0, levelGen.enemySpawnPoints.Count);
@@ -68,6 +72,7 @@ public class LevelGenerator : ILevelBuilder
             //levelGen.enemySpawnPoints.RemoveAt(current);
         }
 
+        //Adds all pickups for the current levelstructure
         for (int i = 0; i < pickUpCount; i++)
         {
             //int current = rng.Next(0, levelGen.pickupSpawnPoints.Count);
@@ -82,6 +87,7 @@ public class LevelGenerator : ILevelBuilder
         return levelGen;
     }
 
+    //Builds an empty level of set size. Not in use in the current version.
     private Tile[,] BuildStructure()
     {
         Tile[,] levelGenStructure = new Tile[32, 32];

@@ -10,6 +10,7 @@ namespace ConsoleDungeonCrawler
     {
         static void Main(string[] args)
         {
+            //Initializes everything necessary to run the application independently
             MasterControlProgram MCP = new MasterControlProgram();
             ConsoleMenuController menuController = new ConsoleMenuController();
             ConsolePlayerController playerController = new ConsolePlayerController();

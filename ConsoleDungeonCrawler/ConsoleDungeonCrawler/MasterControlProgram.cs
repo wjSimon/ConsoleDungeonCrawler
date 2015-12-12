@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+//The thing that controls it all here, don't touch if you don't know what you're doing.
+//Initilizes the GameState and controls the View/Controllers. Nothing works without this.
 public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeListener
 {
     public static string map = "";
@@ -10,6 +12,7 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
     public MasterControlProgram()
     {
         turn = 0;
+        //needed for the LevelFromImage() stuff
         map = "nomap";
         Application.Add((IGameDataChangeListener)this);
     }
@@ -23,7 +26,6 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
 
     public void Run()
     {
-        //Application.NewGame();
         Application.ChangeGameState(GameStates.MENU);
         view.Execute();
 
@@ -75,12 +77,14 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
     }
     public void EndTurn()
     {
+        //Resets all Actors actions
         turn++;
         data.player.actions = data.player.maxActions;
         for (int i = 0; i < data.collision.Count; i++)
         {
             data.collision[i].actions = data.collision[i].maxActions;
         }
+        //Checks the player position for triggers
         for (int i = 0; i < data.level.trigger.Count; i++)
         {
             if (data.level.trigger[i].position.x == data.player.position.x && data.level.trigger[i].position.y == data.player.position.y)
@@ -89,6 +93,7 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
             }
         }
 
+        //Reduces all "temp" Trait durations by 1, removes them if their duration is <= 0 - This is one point in the program where Traits get removed by Tag
         for (int i = 0; i < data.collision.Count; i++)
         {
             for (int j = 0; j < data.collision[i].traits.Count; j++)
@@ -102,9 +107,9 @@ public class MasterControlProgram : IGameDataChangeListener, IGameStateChangeLis
             }
         }
 
+        //Resets the controller states 
         ConsolePlayerController.done = false;
         EnemyController.done = false;
-        ConsoleView.errorMessage = "";
     }
 
     public static void SetController(IBaseController c)

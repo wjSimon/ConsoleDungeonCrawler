@@ -6,7 +6,7 @@ using System.Text;
 
 public class Item : IImpactBehaviour
 {
-
+    //Not directly in use anymore, but useful if you need to debug some stuff.
     public Item()
     {
         this.name = "empty_item";

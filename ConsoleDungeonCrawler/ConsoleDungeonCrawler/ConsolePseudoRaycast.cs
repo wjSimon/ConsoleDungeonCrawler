@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+/// <summary>
+/// Class that tries to emulate a RayCast by checking the "path" between two two-integer value positions for walls
+/// </summary>
 public class ConsolePseudoRaycast
 {
-    //THIS RAYCAST SUCKS HARD; REALLY HARD.
+    //The absolute highlight of this application. Bathe in its glory.
     public ConsolePseudoRaycast()
     {
     }
@@ -27,9 +29,7 @@ public class ConsolePseudoRaycast
         {
             int count = 0;
 
-            //Has to run each Raycast twice for consistency. Has some questionable results with corners...
             top = new Vector2(Vector2.Equalize(target_position, source));
-            //bot = new Vector2(Vector2.Equalize(source, target_position));
 
             //PLEASE FIND BETTER WAY - GOOD FUCKING JOB, LOSER
             if (x > 0) x -= 1;
@@ -64,3 +64,35 @@ public class ConsolePseudoRaycast
         return dist_vec;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//I really should've listened to my mother and do something worthwhile...

@@ -8,6 +8,8 @@ public class Weapon : Item
 {
     Random rng = new Random();
 
+
+    //CONSTRUCTOR ARMADA INBOUND
     public Weapon()
     {
         this.name = "empty_weap";
@@ -83,7 +85,6 @@ public class Weapon : Item
     //For the player
     public void Attack()
     {
-        //Console.WriteLine("WEAPON ATTACKING");
         GameData data = Application.GetData();
         int hits = 1;
 
@@ -227,7 +228,7 @@ public class Weapon : Item
                 //Had to new the Vectors because there was some weird position switching going on
                 if ((ConsolePseudoRaycast.CastRay(new Vector2(source), new Vector2(target))))
                 {
-                    return null;
+                    return null; //Allows us to easily check if there was a target found (!= null) without having to return a struct containing said target and a bool
                 }
                 /**/
                 targetExists = true;
@@ -245,6 +246,7 @@ public class Weapon : Item
 
     public bool CheckAccuracy()
     {
+        //Randomizes a random number, turns it into a 2-digit decimal and compares with the weapon acc for the check
         float rngF = (rng.Next(-50, 100));
         float acc = rngF / 100.0f;
         if (acc < 0.01f) acc = 0.01f;

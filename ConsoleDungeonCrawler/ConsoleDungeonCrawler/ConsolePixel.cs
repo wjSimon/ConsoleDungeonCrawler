@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+/// <summary>
+/// Sets the output values for ONE char on the console
+/// </summary>
 public class ConsolePixel
 {
     public ConsolePixel()

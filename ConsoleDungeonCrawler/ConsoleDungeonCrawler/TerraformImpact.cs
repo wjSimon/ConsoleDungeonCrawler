@@ -16,6 +16,7 @@ public class TerraformImpact : IImpactBehaviour
     {
         data = Application.GetData();
 
+        //Really cool stuff here. Goes throuh the X + Y Axis of the grenades pos and switches walls with floors
         for (int i = 1; i < data.level.structure.GetLength(0)-1; i++)
         {
             if (data.level.structure[i, (int)data.player.selector.position.y].substance == ClipType.WALL)
@@ -34,6 +35,7 @@ public class TerraformImpact : IImpactBehaviour
             }
         }
 
+        //Also instakills all enemies in the way~
         for (int i = 0; i < data.collision.Count; i++)
         {
             if (data.collision[i].position.x == data.player.selector.position.x || data.collision[i].position.y == data.player.selector.position.y)
