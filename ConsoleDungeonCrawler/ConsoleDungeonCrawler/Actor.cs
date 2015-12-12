@@ -545,7 +545,7 @@ public class Actor : GameObject
         data.combatlog.Add(exp.ToString() + " experience gained.");
         experience += exp;
 
-        if (experience >= level*50 + (level-1*50))
+        if (experience >= level * 50 + (level - 1 * 50))
         {
             LevelUp();
         }
@@ -557,8 +557,10 @@ public class Actor : GameObject
         level++;
 
         data.combatlog.Add("LEVEL UP! Level " + level.ToString() + " reached");
+        /*
         data.combatlog.Add("Max health increased!");
         data.combatlog.Add("Accuracy increased!");
+        */
 
         if (level > 10)
         {
