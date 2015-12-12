@@ -709,7 +709,7 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
                     label = content.ToCharArray();
                     for (int j = 0; j < label.Length; j++)
                     {
-                        uiContent[i + 18, (data.level.structure.GetLength(1) + 1) + j] = new ConsolePixel(label[j], f, b);
+                        uiContent[i + 18, viewW + 1 + j] = new ConsolePixel(label[j], f, b);
                     }
                 }
             }

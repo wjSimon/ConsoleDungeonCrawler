@@ -107,7 +107,7 @@ public class Weapon : Item
             {
                 if (CheckAccuracy())
                 {
-                    //Have to do it twice to check if target is still alive so it doesnt TakeDamage() on null
+                    //Have to do it twice to check if target is still alive so it doesnt TakeDamage() on null - CheckTarget returns the target, not a bool
                     if (CheckTarget(new Vector2(data.player.position), new Vector2(data.player.selector.position)) != null)
                     {
                         data.combatlog.Add(/*DateTime.Now.Hour + ":" + DateTime.Now.Minute + */"Target found. Dealing damage...");
@@ -129,6 +129,10 @@ public class Weapon : Item
                 currentammo -= 1;
                 data.player.RemoveTrait("acc");
             }
+        }
+        else
+        {
+            data.combatlog.Add("Cannot attack. Target obscured.");
         }
     }
 

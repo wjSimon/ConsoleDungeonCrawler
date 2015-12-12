@@ -45,8 +45,6 @@ public class ConsolePseudoRaycast
 
             count++;
 
-
-            Console.ReadKey();
             if (x == 0 && y == 0)
             {
                 run = false;
