@@ -66,7 +66,7 @@ public class ConsoleMenuController : IBaseController
                 current = states[index];
                 break;
 
-                //Enter checks what menustate current is and performs according action
+            //Enter checks what menustate current is and performs according action
             case ConsoleKey.Enter:
                 if (current == MenuStates.NEW)
                 {

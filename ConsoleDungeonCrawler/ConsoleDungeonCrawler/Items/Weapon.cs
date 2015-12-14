@@ -8,7 +8,6 @@ public class Weapon : Item
 {
     Random rng = new Random();
 
-
     //CONSTRUCTOR ARMADA INBOUND
     public Weapon()
     {

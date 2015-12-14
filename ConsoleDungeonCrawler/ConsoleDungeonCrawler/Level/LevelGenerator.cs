@@ -8,7 +8,6 @@ using System.Text;
 /// </summary>
 public class LevelGenerator : ILevelBuilder
 {
-
     int pickUpCount = 5;
     int enemyCount = 3;
 
@@ -29,7 +28,7 @@ public class LevelGenerator : ILevelBuilder
     public Level Generate()
     {
         Level levelGen = new Level();
-        //Biggest cheat in the Application. The structure and several objects are built through an image which is then passed here to add enemies and pickups
+        //Biggest cheat in the whole fucking thing. The structure and several objects are built through an image which is then passed here to add enemies and pickups
         LevelFromImage lfi = new LevelFromImage();
         levelGen.structure = lfi.BuildStructure();
         lfi.AddObjectsFromImage(levelGen);

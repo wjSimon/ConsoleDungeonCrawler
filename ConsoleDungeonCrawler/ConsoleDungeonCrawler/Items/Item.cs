@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-public class Item : IImpactBehaviour
+public class Item
 {
     //Not directly in use anymore, but useful if you need to debug some stuff.
     public Item()

@@ -10,7 +10,7 @@ public class GameData
     public Actor player;
     public Inventory inventory;
     public bool inv = false;
-    public int currentItem;
+    public int currentItem; //The currently selected item in the inventory. Used for stuff all over so I put it here (controller needs it, view needs it, etc.)
     public bool combat;
     public int subsystems;
     public Score score;
@@ -44,11 +44,12 @@ public class GameData
         player.health = 10;
         player.maxHealth = 10;
         
-        Application.GetData().inventory.Add(player.Weapon.content, 1);
-        Application.GetData().inventory.Add(player.Armor.content, 1);
+        Application.GetData().inventory.Add(player.Weapon.content, 1); //Player gets initiated with Weapon/Armor in slot already, this makes sure he can
+        Application.GetData().inventory.Add(player.Armor.content, 1); //actually access them
 
         Application.GetData().inventory.Add(ItemLibrary.Get().usableList[1], 1);
         Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[2], 1);
+        Application.GetData().inventory.Add(ItemLibrary.Get().grenadeList[1], 1);
 
         //DEBUGGING ONLY, DONT TOUCH IF YOU DONT KNOW WHAT YOU'RE DOING
         /*

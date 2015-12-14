@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 public class EnemyLibrary
 {
     private static EnemyLibrary instance;
-    private Random rng = new Random();
     public List<Actor> meleeList = new List<Actor>();
     public List<Actor> rangedList = new List<Actor>();
     public List<Actor> bossList = new List<Actor>();

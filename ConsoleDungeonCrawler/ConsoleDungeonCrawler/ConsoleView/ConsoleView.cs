@@ -21,7 +21,6 @@ public class ConsoleView : IBaseView, IGameDataChangeListener, IGameStateChangeL
     public GameData data;
     public bool score;
     public bool hud;
-    public IConsoleRenderer currentRenderer;
     private readonly Dictionary<string, char> TILE_CHARS = new Dictionary<string, char>();
     private readonly Dictionary<string, char> ITEM_CHARS = new Dictionary<string, char>();
 

@@ -9,7 +9,7 @@ using System.Text;
 /// </summary>
 public class Throwable : Item
 {
-    List<IImpactBehaviour> behaviour = new List<IImpactBehaviour>();
+    public List<IImpactBehaviour> behaviour = new List<IImpactBehaviour>();
     
     public Throwable()
     {
