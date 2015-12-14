@@ -26,3 +26,5 @@ IN GAME
 
 Moving, Attacking, Reloading, using Items and equipping Items take on actions each.
 Ending your turn refills your actions.
+
+ACTIVATE ALL THREE SUBSYSTEMS AND REACH THE ESCAPE POD TO WIN.

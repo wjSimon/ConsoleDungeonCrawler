@@ -48,7 +48,7 @@ public class LevelGenerator : ILevelBuilder
         pickUpCount = pickUpCount + (rng.Next(0, 10) * factor);
 
         enemyCount = pickUpCount * 2;
-        pickUpCount += 10;
+        pickUpCount += 15;
         maxMeleeCount = enemyCount / 2;
         maxRangedCount = (enemyCount / 2) - 1;
         maxBossCount = 1;

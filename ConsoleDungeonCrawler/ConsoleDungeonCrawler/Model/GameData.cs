@@ -47,10 +47,6 @@ public class GameData
         Application.GetData().inventory.Add(player.Weapon.content, 1); //Player gets initiated with Weapon/Armor in slot already, this makes sure he can
         Application.GetData().inventory.Add(player.Armor.content, 1); //actually access them
 
-        Application.GetData().inventory.Add(ItemLibrary.Get().usableList[1], 1);
-        Application.GetData().inventory.Add(ItemLibrary.Get().weaponList[2], 1);
-        Application.GetData().inventory.Add(ItemLibrary.Get().grenadeList[1], 1);
-
         //DEBUGGING ONLY, DONT TOUCH IF YOU DONT KNOW WHAT YOU'RE DOING
         /*
         Application.GetData().inventory.Add(ItemLibrary.Get().items[0], 1);
@@ -95,11 +91,17 @@ public class GameData
         if (subsystems == 1)
         {
             Application.GetData().inventory.Add(ItemLibrary.Get().items[0], 1);
-            Application.GetData().inventory.Add(ItemLibrary.Get().items[2], 1);
+            Application.GetData().inventory.Add(ItemLibrary.Get().items[1], 1);
+
+
+            Application.GetData().combatlog.Add("Subsystem reached, electronics restored.");
         }
         if (subsystems == 2)
         {
-            Application.GetData().inventory.Add(ItemLibrary.Get().keyList[4], 1);
+            Application.GetData().inventory.Add(ItemLibrary.Get().items[2], 1);
+
+
+            Application.GetData().combatlog.Add("Second Subsystem reached, door controls restored.");
         }
         if (subsystems >= 3)
         {
@@ -113,12 +115,16 @@ public class GameData
                 }
             }
 
+            Application.GetData().combatlog.Add("Last subsytem reached, hydraulics restored");
+
             ActivateLevelFinish();
         }
     }
     //Since its dynamic, we have to store it here instead of the LevelGenerator, the position (levelfinish) is set during the generation process however
     public void ActivateLevelFinish()
     {
+        Application.GetData().combatlog.Add("Escape pod activated.");
+        Application.GetData().combatlog.Add("Please continue to the escape pod.");
         level.trigger.Add(new TriggerObject("endoflevel", levelfinish));
     } 
 }

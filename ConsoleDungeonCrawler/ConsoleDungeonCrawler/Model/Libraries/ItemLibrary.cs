@@ -44,8 +44,8 @@ public class ItemLibrary
         //Gonna be used for additional pickups, like Ammo Mods maybe or other usable that arent grenades (can still be coded like them) -So much for that...
         //Unique items that can not be obtained by random pickups. Right now they are rewards for activating subsystems, and therefore are REALLY broken. Have fun.
         items.Add(new Throwable("terra_former", "grenade", new TerraformImpact()));
-        items.Add(new Item("master_key", "key"));
         items.Add(AmmoFacade.Get().Create("wrath_of_the_gods", damage: 3, accuracy: 1, range: 1, penetration: 1, type: "true"));
+        items.Add(new Item("master_key", "key"));
 
         //Weapons - ALL Weapons in the game
         //PLAYER WEAPONS - split the weapons in enemy and player weapons so the Pickups dont randomize enemy weapons(they're really bad and boring)
@@ -58,9 +58,9 @@ public class ItemLibrary
         weaponList.Add(new Weapon("EHF_osc_blade", "weap", 5, 1, 1.0f, -1, -1, -1, "mechanical", "sharp", 1));
 
         //ENEMY WEAPONS - Weapons used by the enemies. Not needed, but makes it alot easier to use the constructor for new enemies if you split 'em up a little
-        enemyweaponList.Add(new Weapon("claws", "weap", 7, 1, 0.95f, -1, -1, -1, "none", "sharp", 0.3f));
-        enemyweaponList.Add(new Weapon("bolter", "weap", 5, 3, 0.7f, -1, -1, -1, "raw", "bullet", 0));
-        enemyweaponList.Add(new Weapon("bearpaw", "weap", 11, 1, 0.6f, -1, -1, -1, "none", "blunt", 0.1f));
+        enemyweaponList.Add(new Weapon("claws", "weap", 3, 1, 0.95f, -1, -1, -1, "none", "sharp", 1));
+        enemyweaponList.Add(new Weapon("bolter", "weap", 2, 3, 0.7f, -1, -1, -1, "raw", "bullet", 1));
+        enemyweaponList.Add(new Weapon("bearpaw", "weap", 6, 1, 0.6f, -1, -1, -1, "none", "blunt", 1));
 
         //Armor - ALL Armor in the game - Same as with the weapons. Split player and enemy for convenience
         armorList.Add(new Armor("uniform", "armor", 0, "fabric"));

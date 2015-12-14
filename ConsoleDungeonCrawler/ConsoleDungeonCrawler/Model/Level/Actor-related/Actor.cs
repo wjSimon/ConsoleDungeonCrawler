@@ -8,7 +8,6 @@ using System.Text;
 /// </summary>
 public class Actor : GameObject //Name + Position by GameObject
 {
-
     public Actor()
     {
         this.name = "player";
@@ -369,7 +368,7 @@ public class Actor : GameObject //Name + Position by GameObject
         if (armor.armortype == "plate")
         {
             if (dmgtype == "sharp") result = (value * 0.3f) - ((armor.value / 10));
-            if (dmgtype == "bullet") result = (value * 0.9f) - ((armor.value / 10) * (1 - pen / 1.3f));
+            if (dmgtype == "bullet") result = (value * 1.5f) - ((armor.value / 10) * (1 - pen / 1.3f));
             if (dmgtype == "flechet")
             {
                 result = (value * 0.9f) - ((armor.value / 10) * (1 - pen));
@@ -406,8 +405,8 @@ public class Actor : GameObject //Name + Position by GameObject
         #region hybrid
         if (armor.armortype == "hybrid")
         {
-            if (dmgtype == "sharp") result = (value * 0.65f) - ((armor.value / 10) * (1 - pen / 1.4f));
-            if (dmgtype == "bullet") result = (value * 0.65f) - ((armor.value / 10) * (1 - pen / 1.4f));
+            if (dmgtype == "sharp") result = (value) - ((armor.value / 10) * (1 - pen / 1.4f));
+            if (dmgtype == "bullet") result = (value) - ((armor.value / 10) * (1 - pen / 1.4f));
             if (dmgtype == "flechet")
             {
                 result = (value) - ((armor.value / 10) * (1 - pen));
