@@ -236,6 +236,8 @@ public class Actor : GameObject //Name + Position by GameObject
                         }
                     }
                 }
+
+                Application.GetData().score.AddScore(-1);
             }
         }
 

@@ -73,7 +73,7 @@ public class GameData
         /**/
 
         Random rng = new Random();
-        player.position = level.playerSpawnPoints[rng.Next(0, 4)];
+        player.position = level.playerSpawnPoints[rng.Next(0, level.playerSpawnPoints.Count)];
 
         Application.GetData().collision.Add(player);
     }

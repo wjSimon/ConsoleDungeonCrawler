@@ -65,15 +65,24 @@ public class ConsoleMapSelectionController : IBaseController
                 current = states[index];
                 break;
             case ConsoleKey.Enter:
-
                 if (current == MapStates.RANDOM)
                 {
-                    Application.ChangeGameState(GameStates.GAME);
-                    Application.NewGame();
-                }
-                if (current == MapStates.TINY)
-                {
-                    MasterControlProgram.map = "tiny.bmp";
+                    Random rng = new Random();
+                    int temp = rng.Next(0,3);
+
+                    switch (temp)
+                    {
+                        case 0:
+                            MasterControlProgram.map = "small.bmp";
+                            break;
+                        case 1:
+                            MasterControlProgram.map = "medium.bmp";
+                            break;
+                        case 2:
+                            MasterControlProgram.map = "large.bmp";
+                            break;
+                    }
+
                     Application.ChangeGameState(GameStates.GAME);
                     Application.NewGame();
                 }
@@ -85,21 +94,13 @@ public class ConsoleMapSelectionController : IBaseController
                 }
                 if (current == MapStates.MEDIUM)
                 {
+                    MasterControlProgram.map = "medium.bmp";
                     Application.ChangeGameState(GameStates.GAME);
                     Application.NewGame();
                 }
                 if (current == MapStates.LARGE)
                 {
-                    Application.ChangeGameState(GameStates.GAME);
-                    Application.NewGame();
-                }
-                if (current == MapStates.VERYLARGE)
-                {
-                    Application.ChangeGameState(GameStates.GAME);
-                    Application.NewGame();
-                }
-                if (current == MapStates.WHYWOULDYOU)
-                {
+                    MasterControlProgram.map = "large.bmp";
                     Application.ChangeGameState(GameStates.GAME);
                     Application.NewGame();
                 }

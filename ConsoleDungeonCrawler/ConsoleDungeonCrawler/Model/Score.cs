@@ -13,7 +13,10 @@ public class Score {
 
     public void AddScore(int value)
     {
-        score.Add(value);
+        if (GetScore() > 0)
+        {
+            score.Add(value);
+        }
     }
 
     public void AddMultiplier(float mult)

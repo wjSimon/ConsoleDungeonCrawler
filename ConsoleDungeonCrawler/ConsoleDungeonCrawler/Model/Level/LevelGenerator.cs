@@ -45,10 +45,13 @@ public class LevelGenerator : ILevelBuilder
         pickUpCount = ((levelGen.structure.GetLength(0) * levelGen.structure.GetLength(1)) / 100);
         //int factor = ((levelGen.structure.GetLength(0) + levelGen.structure.GetLength(1) / 100));
         int factor = 1;
-        pickUpCount = pickUpCount + (rng.Next(0, 10) * factor);
+        pickUpCount = pickUpCount + (rng.Next(5, 10) * factor);
 
         enemyCount = pickUpCount * 2;
-        pickUpCount += 15;
+
+        float storage = pickUpCount * 1.3f;
+        pickUpCount = (int)storage;
+
         maxMeleeCount = enemyCount / 2;
         maxRangedCount = (enemyCount / 2) - 1;
         maxBossCount = 1;
